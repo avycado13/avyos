@@ -1,6 +1,7 @@
 import "./style.css";
 import "@wterm/dom/css";
 import { WTerm } from "@wterm/dom";
+import { BashShell } from "@wterm/just-bash";
 
 const timeElement = document.querySelector("#timeElement");
 function updateClock() {
@@ -104,9 +105,20 @@ setupApp("about");
 setupApp("clock");
 setupApp("terminal");
 
+const shell = new BashShell({
+	files: { "/home/user/hello.txt": "Hello, world!\n" },
+	greeting: "Welcome to AvyOS!",
+});
 const term = new WTerm(document.getElementById("terminalWterm"), {
-	onTitle(title) {
-		document.title = title;
+	onData(data) {
+		void shell.handleInput(data);
 	},
 });
 await term.init();
+await shell.attach((data) => term.write(data));
+
+// The window is hidden at startup, so measure the terminal when it opens.
+document.getElementById("terminalopen").addEventListener("click", () => {
+	term.fit();
+	term.focus();
+});

@@ -71,6 +71,14 @@ body {
 	background-color: #ec6b5e;
 }
 
+#terminal {
+	width: min(90vw, 500px);
+}
+
+#terminalWterm {
+	height: 320px;
+}
+
 #desktopApps {
 	padding: 64px 16px 16px;
 }
