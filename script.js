@@ -1,3 +1,7 @@
+import "./style.css";
+import "@wterm/dom/css";
+import { WTerm } from "@wterm/dom";
+
 const timeElement = document.querySelector("#timeElement");
 function updateClock() {
 	const now = new Date();
@@ -99,3 +103,10 @@ function setupApp(name) {
 setupApp("about");
 setupApp("clock");
 setupApp("terminal");
+
+const term = new WTerm(document.getElementById("terminalWterm"), {
+	onTitle(title) {
+		document.title = title;
+	},
+});
+await term.init();
