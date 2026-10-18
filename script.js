@@ -1,4 +1,5 @@
 import "./style.css";
+import "./weather.js";
 import "@wterm/dom/css";
 import { WTerm } from "@wterm/dom";
 import { BashShell } from "@wterm/just-bash";
@@ -104,6 +105,7 @@ function setupApp(name) {
 setupApp("about");
 setupApp("clock");
 setupApp("terminal");
+setupApp("weather");
 
 const shell = new BashShell({
 	files: {

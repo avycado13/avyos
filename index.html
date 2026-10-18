@@ -51,6 +51,31 @@
 			</div>
 			<div id="terminalWterm"></div>
 		</div>
+		<div class="window" id="weather" role="region" aria-label="Weather app">
+			<div id="weatherheader" class="handle">
+				<button id="weatherclose" type="button" aria-label="Close weather window"></button>
+				<strong>Weather</strong>
+			</div>
+			<form id="weather-search" class="weather-search">
+				<label for="weather-city">City</label>
+				<div class="weather-search-row">
+					<input id="weather-city" type="search" placeholder="Search for a city" value="San Francisco" required autocomplete="address-level2">
+					<button type="submit">Search</button>
+				</div>
+			</form>
+			<p id="weather-status" role="status" aria-live="polite"></p>
+			<div id="weather-results" hidden>
+				<h2 id="weather-location"></h2>
+				<div class="weather-current">
+					<span id="weather-temperature"></span>
+					<span id="weather-condition"></span>
+				</div>
+				<p id="weather-details"></p>
+				<h3>5-day forecast</h3>
+				<ul id="weather-forecast"></ul>
+				<p class="weather-credit">Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></p>
+			</div>
+		</div>
 		<div id="desktopApps">
 			<button id="aboutopen" class="desktop-icon" type="button" aria-label="Open About window">
 				<img src="images/question.png" alt="question mark">
@@ -64,8 +89,8 @@
 				<img src="images/terminal.png" alt="terminal">
 				<span>Terminal</span>
 			</button>
-			<button id="weatheropen" class="desktop-icon" type="button" aria-label="open weather app">
-							<img src="images/cloud.png" alt="cloud">
+			<button id="weatheropen" class="desktop-icon" type="button" aria-label="Open weather app">
+				<img src="images/cloud.png" alt="cloud">
 				<span>Weather</span>
 			</button>
 		</div>

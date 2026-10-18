@@ -75,6 +75,61 @@ body {
 	width: min(90vw, 500px);
 }
 
+#weather {
+	width: min(90vw, 460px);
+}
+
+.weather-search label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: 600;
+}
+
+.weather-search-row {
+	display: flex;
+	gap: 8px;
+}
+
+.weather-search-row input {
+	min-width: 0;
+	flex: 1;
+	padding: 8px;
+}
+
+.weather-search-row button {
+	cursor: pointer;
+	padding: 8px 12px;
+}
+
+#weather-status:not(:empty) {
+	margin: 16px 0;
+}
+
+.weather-current {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+#weather-temperature {
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+#weather-forecast {
+	list-style: none;
+	padding: 0;
+}
+
+#weather-forecast li {
+	padding: 8px 0;
+	border-top: 1px solid #ddd;
+}
+
+.weather-credit {
+	font-size: 0.85rem;
+}
+
 #terminalWterm {
 	height: 320px;
 }
