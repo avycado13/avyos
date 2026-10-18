@@ -1,19 +1,19 @@
 {
-  "name": "webos-html",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@wterm/dom": "0.5.4",
-    "@wterm/just-bash": "0.5.4",
-    "fflate": "^0.8.3",
-    "just-bash": "3.6.0"
-  },
-  "devDependencies": {
-    "vite": "^7.0.0"
-  }
+	"name": "webos-html",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@wterm/dom": "0.5.4",
+		"@wterm/just-bash": "0.5.4",
+		"fflate": "^0.8.3",
+		"just-bash": "3.6.0"
+	},
+	"devDependencies": {
+		"vite": "^7.0.0"
+	}
 }

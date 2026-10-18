@@ -81,6 +81,10 @@ body {
 
 #desktopApps {
 	padding: 64px 16px 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
 }
 
 .desktop-icon {
@@ -101,6 +105,26 @@ body {
 	width: 64px;
 	height: 64px;
 	border-radius: 16px;
+}
+
+.folder-glyph {
+	width: 64px;
+	height: 64px;
+	font-size: 52px;
+	line-height: 64px;
+}
+
+.folder-window {
+	width: min(90vw, 400px);
+}
+
+.folder-contents {
+	margin: 0;
+	padding-left: 24px;
+}
+
+.folder-contents li {
+	padding: 6px 0;
 }
 
 .desktop-icon.selected,

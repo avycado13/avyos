@@ -106,7 +106,11 @@ setupApp("clock");
 setupApp("terminal");
 
 const shell = new BashShell({
-	files: { "/home/user/hello.txt": "Hello, world!\n" },
+	files: {
+		"/home/user/hello.txt": "Hello, world!\n",
+		"/home/user/Projects/hi.txt": "Hello!",
+		"/home/user/Documents/file.txt": "An Example File",
+	},
 	greeting: "Welcome to AvyOS!",
 	network: {
 		dangerouslyAllowFullInternetAccess: true,
@@ -128,3 +132,65 @@ document.getElementById("terminalopen").addEventListener("click", () => {
 	term.fit();
 	term.focus();
 });
+const folders = [
+	{ name: "Documents", path: "/home/user/Documents" },
+	{ name: "Projects", path: "/home/user/Projects" },
+];
+
+function addDesktopFolder(folder, index) {
+	const id = `folder-${index}`;
+	const icon = document.createElement("button");
+	icon.id = `${id}open`;
+	icon.type = "button";
+	icon.className = "desktop-icon";
+	icon.setAttribute("aria-label", `Open ${folder.name} folder`);
+	const glyph = document.createElement("span");
+	glyph.className = "folder-glyph";
+	glyph.setAttribute("aria-hidden", "true");
+	glyph.textContent = "📁";
+	const label = document.createElement("span");
+	label.textContent = folder.name;
+	icon.append(glyph, label);
+	document.getElementById("desktopApps").append(icon);
+
+	const windowElement = document.createElement("div");
+	windowElement.id = id;
+	windowElement.className = "window folder-window";
+	const header = document.createElement("div");
+	header.id = `${id}header`;
+	header.className = "handle";
+	const close = document.createElement("button");
+	close.id = `${id}close`;
+	close.type = "button";
+	close.setAttribute("aria-label", `Close ${folder.name} folder`);
+	const title = document.createElement("strong");
+	title.textContent = folder.name;
+	header.append(close, title);
+	const contents = document.createElement("ul");
+	contents.className = "folder-contents";
+	windowElement.append(header, contents);
+	document.body.append(windowElement);
+	setupApp(id);
+	let loadId = 0;
+	icon.addEventListener("click", async () => {
+		const currentLoad = ++loadId;
+		contents.replaceChildren();
+		try {
+			const items = await shell.bash.fs.readdir(folder.path);
+			if (currentLoad !== loadId) return;
+			for (const item of items) {
+				const row = document.createElement("p");
+				row.textContent = item;
+				contents.append(row);
+			}
+		} catch (error) {
+			if (currentLoad !== loadId) return;
+			const row = document.createElement("li");
+			row.textContent = `Could not load folder: ${error.message}`;
+			contents.append(row);
+		}
+	});
+}
+setTimeout(() => {
+	folders.forEach(addDesktopFolder);
+}, 500);
