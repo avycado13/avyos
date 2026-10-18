@@ -108,7 +108,13 @@ setupApp("terminal");
 const shell = new BashShell({
 	files: { "/home/user/hello.txt": "Hello, world!\n" },
 	greeting: "Welcome to AvyOS!",
+	network: {
+		dangerouslyAllowFullInternetAccess: true,
+	},
+	javascript: true,
+	python: true,
 });
+
 const term = new WTerm(document.getElementById("terminalWterm"), {
 	onData(data) {
 		void shell.handleInput(data);
