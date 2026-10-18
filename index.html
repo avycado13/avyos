@@ -1,32 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <title>AvyOS</title>
-      <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-  <div
-    style="position: absolute; width: 100%; display: flex; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0, 0.25); color: #fff; justify-content: space-between;">
-    <p style="margin-left: 16px;">
-      AvyOS
-    </p>
-    <p style="margin-right: 16px;">
-      6/21/2023 3:41 PM
-    </p>
-  </div>          <div
-         style="
-            border: solid;
-            padding: 16px;
-            position: absolute;
-            border-radius: 16px;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-         "
-      >
-         <h1>Welcome to AvyOS</h1>
-         <h2>hi! I am Avy. I am a teenager from California</h2>
-         <p>Hello world!</p>
-         <img src="hi.jpeg" alt="penguin With a sign saying hi" >
-      </div>
-   </body>
+	<head>
+		<title>AvyOS</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div id="navbar">
+			<p class="navbar-piece">AvyOS</p>
+			<p class="navbar-piece">Having Fun!</p>
+			<p class="navbar-piece" id="timeElement">Loading</p>
+		</div>
+		<div class="window" id="about">
+			<div id="aboutheader" class="handle">
+				<!-- Handle -->
+				<button id="aboutclose" type="button" aria-label="Close About window"></button>
+			</div>
+			<h1>Welcome to AvyOS</h1>
+			<h2>hi! I am Avy. I am a teenager from California</h2>
+			<p>Hello world!</p>
+			<img src="hi.jpeg" alt="penguin With a sign saying hi">
+		</div>
+		<div id="desktopApps">
+			<button id="aboutopen" class="desktop-icon" type="button" aria-label="Open About window">
+				<img src="./clock.jpeg" alt="">
+				<span>About</span>
+			</button>
+<button id="clockopen" class="desktop-icon" type="button" aria-label="Open About window">
+				<img src="./clock.jpeg" alt="">
+				<span>clock</span>
+			</button>		</div>
+		<script src="script.js"></script>
+	</body>
 </html>
