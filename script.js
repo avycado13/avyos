@@ -1,6 +1,21 @@
 const timeElement = document.querySelector("#timeElement");
 function updateClock() {
-	timeElement.textContent = new Date().toLocaleString();
+	const now = new Date();
+	const seconds = now.getSeconds();
+	const minutes = now.getMinutes();
+	const hours = now.getHours();
+
+	const secondDeg = (seconds / 60) * 360 + 90;
+	const minuteDeg = (minutes / 60) * 360 + 90;
+	const hourDeg = (hours / 12) * 360 + 90;
+
+	document.getElementById("second-hand").style.transform =
+		`rotate(${secondDeg}deg)`;
+	document.getElementById("minute-hand").style.transform =
+		`rotate(${minuteDeg}deg)`;
+	document.getElementById("hour-hand").style.transform =
+		`rotate(${hourDeg}deg)`;
+	timeElement.textContent = now.toLocaleString();
 }
 updateClock();
 setInterval(updateClock, 1000);
@@ -14,7 +29,9 @@ function getAppElements(name) {
 	const closeButton = document.getElementById(`${name}close`);
 	const header = document.getElementById(`${name}header`);
 	if (!appWindow || !openButton || !closeButton || !header) {
-		throw new Error(`App "${name}" needs #${name}, #${name}open, #${name}close, and #${name}header`);
+		throw new Error(
+			`App "${name}" needs #${name}, #${name}open, #${name}close, and #${name}header`,
+		);
 	}
 	return { appWindow, openButton, closeButton, header };
 }
@@ -61,7 +78,9 @@ function setupApp(name) {
 	const { appWindow, openButton, closeButton, header } = getAppElements(name);
 
 	openButton.addEventListener("click", () => {
-		document.querySelectorAll(".desktop-icon.selected").forEach((icon) => icon.classList.remove("selected"));
+		document
+			.querySelectorAll(".desktop-icon.selected")
+			.forEach((icon) => icon.classList.remove("selected"));
 		openButton.classList.add("selected");
 		appWindow.style.display = "block";
 		bringToFront(appWindow);
@@ -79,3 +98,4 @@ function setupApp(name) {
 
 setupApp("about");
 setupApp("clock");
+setupApp("terminal");

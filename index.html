@@ -3,8 +3,38 @@
 	<head>
 		<title>AvyOS</title>
 		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@wterm/dom@0.5.4/src/terminal.css">
 	</head>
 	<body>
+		<!--
+  Import map generated with JSPM Generator
+  Edit here: https://generator.jspm.io/#Y2thZGDhD80rySzJSU1hcCgvSS3K1U/Jz3Uw0DPVM8EQ0E8uLoYJZpUWl+gmJRZnQNUi+MZ6ZnoGAFtGk39bAA
+-->
+		<script type="importmap">
+			{
+				"imports": {
+					"@wterm/dom": "https://cdn.jsdelivr.net/npm/@wterm/dom@0.5.4/dist/index.js",
+					"@wterm/just-bash": "https://cdn.jsdelivr.net/npm/@wterm/just-bash@0.5.4/dist/index.js",
+					"just-bash": "https://cdn.jsdelivr.net/npm/just-bash@3.6.0/dist/bundle/browser.js"
+					},
+					"scopes": {
+						"https://cdn.jsdelivr.net/": {
+							"@wterm/core": "https://cdn.jsdelivr.net/npm/@wterm/core@0.5.4/dist/index.js",
+							"ansi-regex": "https://cdn.jsdelivr.net/npm/ansi-regex@6.4.0/index.js",
+							"diff": "https://cdn.jsdelivr.net/npm/diff@8.0.4/libesm/index.js",
+							"get-east-asian-width": "https://cdn.jsdelivr.net/npm/get-east-asian-width@1.7.0/index.js",
+							"node:zlib": "https://cdn.jsdelivr.net/npm/@jspm/core@2.1.0/nodelibs/browser/zlib.js",
+							"sprintf-js": "https://cdn.jsdelivr.net/npm/sprintf-js@1.1.3/src/sprintf.js",
+							"string-width": "https://cdn.jsdelivr.net/npm/string-width@8.3.0/index.js",
+							"strip-ansi": "https://cdn.jsdelivr.net/npm/strip-ansi@7.2.0/index.js",
+							"turndown": "https://cdn.jsdelivr.net/npm/turndown@7.2.4/lib/turndown.browser.es.js"
+						}
+					}
+				}
+		</script>
+
+		<!-- ES Module Shims import maps polyfills -->
+		<script async src="https://cdn.jsdelivr.net/npm/es-module-shims@2.8.4/dist/es-module-shims.js" crossorigin="anonymous"></script>
 		<div id="navbar">
 			<p class="navbar-piece">AvyOS</p>
 			<p class="navbar-piece">Having Fun!</p>
@@ -18,24 +48,64 @@
 			<h1>Welcome to AvyOS</h1>
 			<h2>hi! I am Avy. I am a teenager from California</h2>
 			<p>Hello world!</p>
-			<img src="hi.jpeg" alt="penguin With a sign saying hi">
+			<img src="images/hi.jpeg" alt="penguin With a sign saying hi">
 		</div>
 		<div class="window" id="clock">
 			<div id="clockheader" class="handle">
 				<!-- Handle -->
 				<button id="clockclose" type="button" aria-label="Close clock window"></button>
 			</div>
+			<div class="clock">
+				<div class="clock-face">
+					<div class="number number1">1</div>
+					<div class="number number2">2</div>
+					<div class="number number3">3</div>
+					<div class="number number4">4</div>
+					<div class="number number5">5</div>
+					<div class="number number6">6</div>
+					<div class="number number7">7</div>
+					<div class="number number8">8</div>
+					<div class="number number9">9</div>
+					<div class="number number10">10</div>
+					<div class="number number11">11</div>
+					<div class="number number12">12</div>
+					<div class="hand hour-hand" id="hour-hand"></div>
+					<div class="hand minute-hand" id="minute-hand"></div>
+					<div class="hand second-hand" id="second-hand"></div>
+				</div>
+			</div>
+		</div>
+		<div class="window" id="terminal">
+			<div id="terminalheader" class="handle">
+				<!-- Handle -->
+				<button id="terminalclose" type="button" aria-label="Close clock window"></button>
+			</div>
+			<div id="terminalWterm"></div>
 		</div>
 		<div id="desktopApps">
 			<button id="aboutopen" class="desktop-icon" type="button" aria-label="Open About window">
-				<img src="./clock.jpeg" alt="">
+				<img src="images/question.png" alt="question mark">
 				<span>About</span>
 			</button>
 			<button id="clockopen" class="desktop-icon" type="button" aria-label="Open Clock window">
-				<img src="./clock.jpeg" alt="">
+				<img src="images/clock.jpeg" alt="clock">
 				<span>Clock</span>
+			</button>
+			<button id="terminalopen" class="desktop-icon" type="button" aria-label="Open terminal app">
+				<img src="images/terminal.png" alt="clock">
+				<span>Terminal</span>
 			</button>
 		</div>
 		<script src="script.js"></script>
+		<script type="module">
+			import { WTerm } from "@wterm/dom";
+			
+			const term = new WTerm(document.getElementById("terminalWterm"), {
+				onTitle(title) {
+					document.title = title;
+					},
+					});
+					await term.init();
+		</script>
 	</body>
 </html>
